@@ -15,8 +15,11 @@ import java.util.List;
 @Controller
 public class MainController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String index() {
-        return "index";
+    public ModelAndView index() {
+        ModelAndView mv = new ModelAndView("index");
+        mv.addObject("title","title");
+        mv.addObject("content","content");
+        return mv;
     }
 
     @RequestMapping(value = "/msg", method = RequestMethod.GET)
@@ -33,5 +36,14 @@ public class MainController {
         mad.addObject(user);//默认为类名的首字母小写
         mad.addObject("users", us);
         return mad;
+    }
+
+
+    @RequestMapping(value = "/mine", method = RequestMethod.GET)
+    public ModelAndView mine() {
+        ModelAndView mv = new ModelAndView("hello");
+        mv.addObject("title", "Spring MVC And Freemarker");
+        mv.addObject("content", " Hello world ， test my first spring mvc ! ");
+        return mv;
     }
 }
