@@ -1,8 +1,8 @@
 package com.marsthink.controller;
 
-import com.marsthink.bean.BookType;
-import com.marsthink.dao.BookTypeDAO;
-import com.marsthink.dao.BookTypeDAOImpl;
+import com.marsthink.bean.User;
+import com.marsthink.service.UserService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,22 +18,17 @@ import java.util.List;
  */
 @Controller
 public class MainController {
+    @Autowired
+    UserService userService;
 
-    BookTypeDAO bookTypeDao=new BookTypeDAOImpl();
+    private static final Logger logger = Logger.getLogger(UserService.class);
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView index() {
         ModelAndView mv = new ModelAndView("index");
         mv.addObject("title", "title");
         mv.addObject("content", "content");
-        if(bookTypeDao == null){
-            System.out.println("***null***");
-        }else{
-            List<BookType> booktypes = bookTypeDao.getAllBookTypes();
-            for (BookType bookType : booktypes) {
-                System.out.println(bookType.getTypeName());
-            }
-        }
+        logger.info(userService.getName("jamal").getAge() + "");
         return mv;
     }
 

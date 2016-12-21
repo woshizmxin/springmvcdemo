@@ -1,20 +1,14 @@
-package com.marsthink.controller;
+package com.marsthink.entity;
 
 import java.util.Date;
 
 /**
  * Created by zhoumao on 2016/12/20.
  */
-public class User {
+public class UserInfo {
     private String name;
     private int age;
     private Date date;
-
-    public User(String name, int age, Date date) {
-        this.name = name;
-        this.age = age;
-        this.date = date;
-    }
 
     public String getName() {
         return name;
